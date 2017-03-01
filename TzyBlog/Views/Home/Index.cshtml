@@ -1,0 +1,539 @@
+﻿
+@using ModelMyBlog
+<!DOCTYPE HTML>
+@{
+    ViewBag.Title = null;
+}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=10,IE=9,IE=8,ie=7">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="baidu-site-verification" content="vZpksoimkY" />
+    <title>Tan-sir个人博客 - 給自己一个机会我要让世界认识自己✿</title>
+
+    <meta name="keywords" content="Tan-sir,博客,Tan-sir博客,Tan-sir个人博客,个人博客,好看的博客" />
+    <meta name="description" content="✿Tan-sir个人博客✿是一个分享前端学习资料的博客型网站,与广大前端爱好者一起分享最新技术,一起解决所遇到的问题.还会分享很多有趣的段子,快点老司机要开车拉！" />
+
+    <link rel='stylesheet' id='open_social_css-css' href='~/Content/css/os.css' type='text/css' media='all' />
+    <link rel="stylesheet" href="~/Content/css/style.css" media="all">
+    <link rel="stylesheet" href="~/Content/css/swiper.min.css" media="all">
+    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" media="screen">
+    <script type="text/javascript" src="~/Scripts/js/base.loading.js"></script>
+
+
+
+
+
+</head>
+
+<body class="home blog">
+    <div class="placeholder"></div>
+    <!--[if lt IE 9]>
+      <script src="js/html5.js"></script>
+    <![endif]-->
+    <script src="~/Scripts/js/jquery.js"></script>
+    <script>
+window._deel = {
+    maillist: '',
+    maillistCode: '',
+    commenton: 0,
+    roll: [0, 0]
+}</script>
+    <script type="text/javascript">
+$(function () {
+    $(window).scroll(function () {
+        $offset = $('.placeholder').offset(); //不能用自身的div，不然滚动起来会很卡
+        if ($(window).scrollTop() > $offset.top) {
+            $('.header').css({
+                'position': 'fixed',
+                'top': '0px',
+                'left': $offset.left + 'px',
+                'z-index': '999'
+            });
+            $(".container").css({
+                "margin-top": "93px"
+            });
+        } else {
+            $('.header').removeAttr('style');
+            $('.container').removeAttr('style');
+        }
+    });
+})
+    </script>
+    <!--头部开始-->
+    <header class="header" style="height: 52px;">
+        <div class="navbar">
+            <h1 class="logo">
+                <a href="/" title="Tan-sir" alt="Tan-sir,个人博客">Tan-sir个人博客_Tan-sir博客</a>
+            </h1>
+            <ul class="nav">
+
+
+                <li class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-home"><a href="/">首页</a></li>
+
+
+                <li class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-home">@Html.ActionLink("学习", "List", new { ID = 4 })</li>
+                }</li>
+                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">
+                    <a>笔记</a>
+                    <ul class="sub-menu">
+                        @{
+                            List<objSpecificType> list = (List<objSpecificType>)ViewData["book"];
+                            foreach (objSpecificType Item in list)
+                            {
+                                <li class="menu-item menu-item-type-taxonomy menu-item-object-category">@Html.ActionLink(@Item.Name, "List", new { ID = @Item.ID })</li>
+                            }
+                        }
+                    </ul>
+                </li>
+
+                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">@Html.ActionLink("资料", "List", new { ID = 5 })</li>
+
+                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">@Html.ActionLink("摄影", "List", new { ID = 6 })</li>
+
+
+                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">@Html.ActionLink("我们", "List", new { ID = 7 }) </li>
+
+
+            </ul>
+            <div class="menu pull-right">
+                <form name="formsearch" action="/plus/search.php" method="get">
+
+                    <input class="search-input" name="q" type="text" id="search-keyword" value="" required="required" placeholder=" 输入你要找的内容" />
+
+
+                    <button type="submit" class="searchbtn search-submit" name="search" title="搜一下">
+
+
+
+                        <i class="fa"></i>
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    </header>
+
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?7c0f70e6d8aaeb8ec75e153de1c7b516";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <!--头部结束-->
+
+    <script type="text/javascript" src="~/Scripts/js/swiper.min.js"></script>
+    <section class="container">
+        @*<div class="banner banner-navbar">
+                  <div class="swiper-container">
+                      <div class="swiper-wrapper">
+
+                          <div class="swiper-slide"><img src="~/Img/picture/banner_1.jpg" alt="Tan-sir博客"></div>
+                          <div class="swiper-slide"><img src="~/Img/picture/banner_2.jpg" alt="Tan-sir博客"></div>
+                          <div class="swiper-slide"><img src="~/Img/picture/banner_3.jpg" alt="Tan-sir博客"></div>
+                      </div>
+                      <div class="swiper-pagination"></div>
+                      <div class="swiper-button-next"></div>
+                      <div class="swiper-button-prev"></div>
+                  </div>
+            </div>*@
+        <script>
+            var swiper = new Swiper('.swiper-container', {
+                pagination: '.swiper-pagination',
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
+                paginationClickable: true,
+                spaceBetween: 30,
+                centeredSlides: true,
+                autoplay: 5000,
+                autoplayDisableOnInteraction: false,
+                loop: true
+            });
+        </script>
+        <div class="content-wrap">
+            <div class="content">
+                <div class="sticky">
+                    <h2 class="title">@Html.ActionLink("特别推荐","List",new {ID=1})</h2>
+                    <ul>
+
+
+                        <li class="item">
+                            <a href="/tp/707.html" target="_blank">
+                                <img src="~/Img/picture/1-161111162413138.jpg" alt="接下来一个段子统统告诉你什么叫大数据？什么叫O2O?什么叫蓝海？" />
+                                <h3>接下来一个段子统统告诉你什么叫大数据？什么叫O2O?什么叫蓝海？</h3>
+                                <p class="muted">什么叫大数据？什么叫O2O?什么叫蓝海？什么叫红海？什么叫互联网思维？什么...</p>
+                            </a>
+                        </li>
+                        <li class="item">
+                            <a href="/tp/706.html" target="_blank">
+                                <img src="~/Img/picture/1-16111009463j15.jpg" alt="本人学识渊博，经验丰富，代码风骚 求工作一份，详细看简历！" />
+                                <h3>本人学识渊博，经验丰富，代码风骚 求工作一份，详细看简历！</h3>
+                                <p class="muted">你想找高薪的工作吗？你想找工作5/小时双休的工作吗？你想找离家非常近的工...</p>
+                            </a>
+                        </li>
+                        <li class="item">
+                            <a href="/cz/705.html" target="_blank">
+                                <img src="~/Img/picture/1-16110q303293u.jpg" alt="网站配色必备！让我们一起从“0”开始" />
+                                <h3>网站配色必备！让我们一起从“0”开始</h3>
+                                <p class="muted">今日咱们来聊聊社鸡师的经典论题：配色！许多自学规划的同学没有接受过体系...</p>
+                            </a>
+                        </li>
+                        <li class="item">
+                            <a href="/tp/690.html" target="_blank">
+                                <img src="~/Img/picture/1-161023142526233.jpg" alt="梳子能卖给和尚,你信吗？而所谓的营销到底是什么？" />
+                                <h3>梳子能卖给和尚,你信吗？而所谓的营销到底是什么？</h3>
+                                <p class="muted">今天和大家分享一个营销的理念！也是我从别的渠道看到的觉得非常不错，分享...</p>
+                            </a>
+                        </li>
+                        <li class="item">
+                            <a href="/tp/687.html" target="_blank">
+                                <img src="~/Img/picture/1-161021195620547.jpg" alt="<font color='#FF0000'>为什么男人喜欢绿茶表,这让女汉子如何活呀……</font>" />
+                                <h3><font color='#FF0000'>为什么男人喜欢绿茶表,这让女汉子如何活呀……</font></h3>
+                                <p class="muted">今天咱们来谈谈绿茶婊 绿茶婊 泛指那些外表清新脱俗， 内心工于心计的女子。...</p>
+                            </a>
+                        </li>
+                        <li class="item">
+                            <a href="/tp/691.html" target="_blank">
+                                <img src="~/Img/picture/1-16102420225b63.jpg" alt="33张赤果果的人性图，别抱怨鞋子不好看，世上还有没有脚的人。" />
+                                <h3>33张赤果果的人性图，别抱怨鞋子不好看，世上还有没有脚的人。</h3>
+                                <p class="muted">再累，不能放弃啊，想想自己，和自己身后的那些亲人。...</p>
+                            </a>
+                        </li>
+
+
+
+
+                    </ul>
+                </div>
+                <h2 class="title">最新发布</h2>
+            @{
+                List<objMsg> listMsg = (List<objMsg>)ViewData["NewMsg"];
+                foreach (objMsg Item in listMsg)
+                {
+                     <article class="excerpt">
+                    <div class="focus">
+                        <a href="/tp/707.html" class="thumbnail" target="_blank">
+                            <img src="~/Img/picture/1-161111162413138.jpg" alt=@Item.Title title=@Item.Title />
+                        </a>
+                    </div>
+                    <header>
+                        <h2>
+                            <a href="/tp/707.html" title=@Item.Title target="_blank">@Item.Title</a>
+                        </h2>
+                    </header>
+                    <p class="note">@{
+                        if (Item.Msg.Length <= 100)
+                        {
+                         @Html.Raw(HttpUtility.HtmlDecode(@Item.Msg));
+                        }
+                        else
+                        {
+                            @Html.Raw(HttpUtility.HtmlDecode(Item.Msg.Remove(100, Item.Msg.Length - 100)))
+                         @*@Html.Raw(Item.Msg.Remove(100, Item.Msg.Length - 100));*@
+                        }
+                                    }...</p>
+                    <p>
+                        <span class="muted">
+                            <i class="icon-user icon12"></i> Tan-sir
+                        </span>
+                        @*<span class="muted">
+                            <i class="ico icon-time icon12"></i> 2016-11-11
+                        </span>
+                        <span class="muted">
+                            <i class="ico icon-eye-open icon12"></i>  71次浏览
+                        </span>*@
+                    </p>
+                </article>
+                }
+                }
+
+            </div>
+        </div>
+        </div>
+
+        <aside class="sidebar">
+            <div class="widget">
+                <h3 class="widget_tit">热门标签</h3>
+                <div class="tag_list">
+                    <ul>
+
+
+
+
+                        <li><a href="/plus/search.php?q=ajax&search=" target="_blank">ajax</a></li>
+                        <li><a href="/plus/search.php?q=Dreamweaver&search=" target="_blank">Dreamweaver</a></li>
+                        <li><a href="/plus/search.php?q=html&search=" target="_blank">html</a></li>
+                        <li><a href="/plus/search.php?q=js&search=" target="_blank">js</a></li>
+                        <li><a href="/plus/search.php?q=css&search=" target="_blank">css</a></li>
+                        <li><a href="/plus/search.php?q=css&search=" target="_blank">搞笑</a></li>
+                        <li><a href="/plus/search.php?q=娱乐&search=" target="_blank">娱乐</a></li>
+                        <li><a href="/plus/search.php?q=MySQL&search=" target="_blank">MySQL</a></li>
+                        <li><a href="/plus/search.php?q=PHP&search=" target="_blank">PHP</a></li>
+                        <li><a href="/plus/search.php?q=dedeCMS&search=" target="_blank">dedeCMS</a></li>
+                        <li><a href="/plus/search.php?q=Tan-sir&search=" target="_blank">Tan-sir</a></li>
+                        <li><a href="/plus/search.php?q=博客&search=" target="_blank">博客</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="widget d_postlist">
+                <h3 class="widget_tit">推荐文章</h3>
+                <ul>
+
+                    <li>
+                        <a href="/tp/707.html">
+                            <span class="thumbnail">
+                                <img src="~/Img/picture/1-161111162413138.jpg" alt="接下来一个段子统统告诉你什么叫大数据？什么叫O2O?什么叫蓝海" title="接下来一个段子统统告诉你什么叫大数据？什么叫O2O?什么叫蓝海" />
+                            </span>
+                            <span class="text">接下来一个段子统统告诉你什么叫大数据？什么叫O2O?什么叫蓝海</span>
+                            <span class="muted">2016-11-11</span>
+                            <span class="muted">
+                                <span class="ds-thread-count" data-replace="1">71次阅读</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/tp/706.html">
+                            <span class="thumbnail">
+                                <img src="~/Img/picture/1-16111009463j15.jpg" alt="本人学识渊博，经验丰富，代码风骚 求工作一份，详细看简历！" title="本人学识渊博，经验丰富，代码风骚 求工作一份，详细看简历！" />
+                            </span>
+                            <span class="text">本人学识渊博，经验丰富，代码风骚 求工作一份，详细看简历！</span>
+                            <span class="muted">2016-11-10</span>
+                            <span class="muted">
+                                <span class="ds-thread-count" data-replace="1">101次阅读</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/cz/705.html">
+                            <span class="thumbnail">
+                                <img src="~/Img/picture/1-16110q303293u.jpg" alt="网站配色必备！让我们一起从“0”开始" title="网站配色必备！让我们一起从“0”开始" />
+                            </span>
+                            <span class="text">网站配色必备！让我们一起从“0”开始</span>
+                            <span class="muted">2016-11-08</span>
+                            <span class="muted">
+                                <span class="ds-thread-count" data-replace="1">83次阅读</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/tp/690.html">
+                            <span class="thumbnail">
+                                <img src="~/Img/picture/1-161023142526233.jpg" alt="梳子能卖给和尚,你信吗？而所谓的营销到底是什么？" title="梳子能卖给和尚,你信吗？而所谓的营销到底是什么？" />
+                            </span>
+                            <span class="text">梳子能卖给和尚,你信吗？而所谓的营销到底是什么？</span>
+                            <span class="muted">2016-11-08</span>
+                            <span class="muted">
+                                <span class="ds-thread-count" data-replace="1">683次阅读</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/tp/687.html">
+                            <span class="thumbnail">
+                                <img src="~/Img/picture/1-161021195620547.jpg" alt="<font color='#FF0000'>为什么男人喜欢绿茶表,这让女汉子如何活呀……</font>" title="<font color='#FF0000'>为什么男人喜欢绿茶表,这让女汉子如何活呀……</font>" />
+                            </span>
+                            <span class="text"><font color='#FF0000'>为什么男人喜欢绿茶表,这让女汉子如何活呀……</font></span>
+                            <span class="muted">2016-11-08</span>
+                            <span class="muted">
+                                <span class="ds-thread-count" data-replace="1">879次阅读</span>
+                            </span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            <style>
+                .ds-meta a {
+                    color: #f00;
+                }
+
+                .rmpl {
+                    padding: 11px 15px 14px;
+                    border-bottom: 1px solid #eaeaea;
+                    background-color: #fbfbfb;
+                    font-weight: 400;
+                    font-size: 18px;
+                    line-height: 20px;
+                }
+
+                .pinglun {
+                    background: #fff;
+                }
+
+                .ds-recent-comments {
+                    padding-left: 15px;
+                }
+
+                #ds-recent-comments li.ds-comment {
+                    border: none;
+                }
+            </style>
+            @*<div class="pinglun"  style="border-radius:5px;      box-shadow: 0 1px 3px rgba(0, 0, 0, .1);">
+                <h3 class="rmpl">热门评论</h3>*@
+            <!-- 多说最新评论 start -->
+            @*</div>*@
+
+
+
+
+
+
+
+
+            @*<div class="widget d_textbanner" style=" margin-top:10px;    box-shadow: 0 1px 3px rgba(0, 0, 0, .1);">
+
+                <a class="style03" target="_blank" style="padding-bottom:0;">
+                            <strong>统计</strong>
+                            </a>
+                            <p class="ys">
+                <span class="ys1" id="showDays"></span>
+
+                <span class="ys1">本月更新：<strong style="color:#f00;">15</strong> 篇</span>
+                <span class="ys1">共有文章： <strong style="color:#f00;">672</strong> 篇</span>
+                <span class="ys1" style="padding-bottom:20px;"></span></span></span>
+
+
+                <style>
+                .ys{width:90%;margin-left:5%; margin-right:5%;}
+                .ys1{width:60%; font-size:16px; line-height:30px;display:block; margin:auto;}
+                </style>
+
+
+
+
+                            </p>
+
+                        </div>*@
+
+            <script>
+                var birthDay = new Date("09/17/2016");  // 这里填写网站第一次运行日期
+                var now = new Date();
+                var duration = now.getTime() - birthDay.getTime();
+                var total = Math.floor(duration / (1000 * 60 * 60 * 24));
+                total = "<strong style='color:red;'>" + total + "</strong >";
+                document.getElementById("showDays").innerHTML = "本站运行：" + total + "天"; //这里就是总运行天数
+
+            </script>
+
+
+
+
+            @*<div class="widget d_textbanner" style=" margin-top:10px;    box-shadow: 0 1px 3px rgba(0, 0, 0, .1);">
+                    <a class="style03" target="_blank">
+                        <strong>分享</strong>
+
+
+                </a>
+
+                <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+                <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"32"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                </script>
+
+                <style>
+                .bdshare-button-style0-32 a{    padding: 0 3px 3px; min-height:32px; }
+                .bdsharebuttonbox{margin-left:10px;}
+                </style>
+
+                        </div>*@
+
+
+
+
+
+
+
+
+
+        </aside>
+    </section>
+    <div class="IndexLinkListWrap">
+        <div class="moketitle" style="font-size: 15px;">友情链接</div>
+        <ul class="friendlyLink">
+
+            <a href='http://www.zbboke.com/' target='_blank'>Tan-sir个人博客</a>
+
+
+
+        </ul>
+    </div>
+    <footer class="footer">
+        <div class="footer-inner">
+            <div style="padding:0 20px;overflow:hidden;">
+                <div class="copyright pull-left">
+
+                    <a href="/about/">关于</a> |
+
+                    <a href="/xx/">学习</a> |
+
+                    <a href="/tp/">娱乐</a> |
+
+                    <a href="/cz/">成长</a> |
+
+                    <a>Copyright © 2016, zhangbing All Rights Reserved. </a>| <a href="http://www.miitbeian.gov.cn/" target="_blank" rel="nofollow">苏ICP备16050559号</a> <a target="_blank" href="sitemap.htm">网站地图</a>
+                </div>
+                <div class="trackcode pull-right">
+                <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://"); document.write(unescape("%3Cspan id='cnzz_stat_icon_1260588650'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1260588650%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script></div>
+            </div>
+
+        </div>
+        </div>
+    </footer>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(function () {
+                var scrollDiv = document.createElement('div');
+                $(scrollDiv).attr('id', 'toTop').html('<ul><li class="backBtn" title="返回顶部"><a href="javascript:;" class="icon_backTo"></a></li></ul>').appendTo('body');
+                $(window).scroll(function () {
+                    if ($(this).scrollTop() > 300) {
+                        $('.backBtn').fadeIn();
+                    } else {
+                        $('.backBtn').fadeOut();
+                    }
+                });
+                $('.backBtn').click(function () {
+                    $('body,html').animate({ scrollTop: 0 }, 300);
+                })
+            })
+
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        (function () {
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+
+
+
+
+
+
+</body>
+</html> 

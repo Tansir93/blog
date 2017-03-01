@@ -1,0 +1,175 @@
+﻿@using ModelMyBlog
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=10,IE=9,IE=8,ie=7">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <title>{dede:field.title/}_{dede:global.cfg_webname/}</title>
+    <meta name="keywords" content="{dede:field.keywords/}" />
+
+    <link rel='stylesheet' id='open_social_css-css' href='~/Content/css/os.css' type='text/css' media='all' />
+    <link rel="stylesheet" href="~/Content/css/style1.css" media="all">
+    <link href="~/content/css/font-awesome.min.css" rel="stylesheet" media="screen">
+</head>
+
+<body class="single single-post single-format-standard">
+    <div class="placeholder"></div>
+    <!--[if lt IE 9]>
+      <script src="{dede:global.cfg_templets_skin/}/js/html5.js"></script>
+    <![endif]-->
+
+    <!--头部开始-->
+    <header class="header" style="height: 52px;">
+        <div class="navbar">
+            <h1 class="logo">
+                <a href="/" title="Tan-sir" alt="Tan-sir,个人博客">Tan-sir个人博客_Tan-sir博客</a>
+            </h1>
+            <ul class="nav">
+
+
+                <li class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-home"><a href="/">首页</a></li>
+
+
+                <li class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-home">@Html.ActionLink("学习", "List", new { ID = 4 })</li>
+                }</li>
+                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">
+                    <a>笔记</a>
+                    <ul class="sub-menu">
+                        @{
+                            List<objSpecificType> list = (List<objSpecificType>)ViewData["book"];
+                            foreach (objSpecificType Item in list)
+                            {
+                                <li class="menu-item menu-item-type-taxonomy menu-item-object-category">@Html.ActionLink(@Item.Name, "List", new { ID = @Item.ID })</li>
+                            }
+                        }
+                    </ul>
+                </li>
+
+                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">@Html.ActionLink("资料", "List", new { ID = 5 })</li>
+
+                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">@Html.ActionLink("摄影", "List", new { ID = 6 })</li>
+                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">@Html.ActionLink("我们", "List", new { ID = 7 }) </li>
+
+
+            </ul>
+            <div class="menu pull-right">
+                <form name="formsearch" action="/plus/search.php" method="get">
+
+                    <input class="search-input" name="q" type="text" id="search-keyword" value="" required="required" placeholder=" 输入你要找的内容" />
+
+
+                    <button type="submit" class="searchbtn search-submit" name="search" title="搜一下">
+
+
+
+                        <i class="fa"></i>
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    </header>
+
+
+
+
+    <!--头部结束-->
+
+
+
+
+    <section class="container">
+        <div class="content-wrap">
+            <div class="content">
+                <header class="article-header">
+                    <h1 class="article-title"><h1>啦啦啦啦啦啦啦啦啦啦啦啦</h1></h1>
+                    <div class="meta">
+                        <p style="float:right; display:none; margin:0px; "></p>
+                        <span class="muted">
+                            <i class="icon-user icon12"></i>
+
+                        </span>
+                        <time class="muted">
+                            
+                        </time>
+
+                        <style>
+                            .bdshare-button-style0-32 a {
+                                padding: 0 3px 3px;
+                                min-height: 32px;
+                            }
+
+                            .bdsharebuttonbox {
+                                margin-left: 10px;
+                            }
+                        </style>
+
+                    </div>
+                </header>
+
+                <article class="article-content">
+
+                    <p >
+                        <a name="482" />
+                        <h1 id="test1">第九章Lambda表达式和Lambda表达式树.html</h1>
+                        <div id="test1">
+                            <table bgcolor="#D4DDE5" border="0">
+                                <tr><td><b>作者：</b></td><td><i>Tan_sir</i></td></tr>
+                            </table>
+                        </div>
+                        <br />
+
+                        <div id="test1">
+                            <span><div><span style="font-size: 1rem;"><font color="#FF0000">LINQ的基本功能就是创建操作管道，以及这些操作需要的任何状态。<font></font></span></div><div>
+<span style="font-size: 1rem;">为了富有效率的使用数据库和其他查询引擎，我们需要一种不同的方式表示管道中的各个操作。即把代码当作可在编程中进行检查的数据。</span>
+</div><div><span style="font-size: 1rem;">Lambda表达式不仅可以用他们创建委托实例，而且C#编译器也能将他们转换成表达式树——用于表示Lambda表达式逻辑的一种数据结构。
+                                简言之——Lambda表达式用符号语言习惯的方法来表示LINQ数据管线中的操作。</span></div><div><span style="font-size: 1.067rem;">
+<b>作为委托的Lambda表达式</b>
+</span><span style="font-size: 1rem;"><br /></span></div><div><span style="font-size: 1.067rem;"><span style="font-size: 1rem;">
+Lambda有特殊转换规则：表达式的类型本身并非委托类型，但它可以通过多种方式隐式或显示的转换成一个委托实例。
+</span></span></div><div>匿名函数这个术语同时涵盖了匿名方法和Lambda表达式</div><div><b>转换成Lambda表达式</b></div><ol><li><code>
+#region 9-1用匿名方法来创建委托实例
+</code></li><li><code>Func&lt;string, int&gt; returnLength;//等价public delegate int SomeDelegate(string arg1)。当返回void时，使用Action&lt;&gt;系列委托
+                                </code></li><li><code>returnLength = delegate(string text) { return text.Length; };</code></li><li><code>Console.WriteLine(returnLength(&quot;Holle&quot;));</code></li><li><code>#endregion</code></li></ol><ol><li><code>#region 9-2冗长的第一个Lambda表达式</code></li><li><code>Func&lt;string, int&gt; returnLength;</code></li><li><code>returnLength = (string text) =&gt; { return text.Length; };</code></li><li><code>returnLength = (string text) =&gt; text.Length;//用单一表达式做为主体</code></li><li><code>returnLength = (text) =&gt; text.Length;//隐式类型的参数列表</code></li><li><code>returnLength = text =&gt; text.Length;//单一参数的快捷语法</code></li><li><code>Console.WriteLine(returnLength(&quot;Holle&quot;));</code></li><li><code>#endregion</code></li></ol><div>匿名方法中控制返回语句的规则同样不适用于Lambda表达式：不能从Lambda表达式返回void类型，如果有一个非void的返回类型，那么每个代码路径都必须返回一个兼容值。</div><div>Lambda表达式的主体可以包含另一个Lambda表达式，表达式参数可以是另一个委托。</div><div><span style="font-size: 1.067rem;"><b>使用List&lt;T&gt;和事件的简单例子</b></span></div><div><span style="font-size: 1.067rem;"><b><br /></b></span></div><ol><li><code>#region 9-4用Lambda处理一个电影列表</code></li><li><code>var films = new List&lt;Film&gt;</code></li><li><code>{</code></li><li><code>new Film{Name=&quot;Jaws1&quot;,Year=1975},</code></li><li><code>new Film{Name=&quot;Jaws2&quot;,Year=1975},</code></li><li><code>new Film{Name=&quot;Jaws5&quot;,Year=1975},</code></li><li><code>new Film{Name=&quot;Jaws4&quot;,Year=1976},</code></li><li><code>};</code></li><li><code>Action&lt;Film&gt; print = film =&gt; Console.WriteLine(&quot;Name={0},Year={1}&quot;, film.Name, film.Year);</code></li><li><code>films.ForEach(print);//打印全部元素</code></li><li><code>films.FindAll(film =&gt; film.Year &gt; 1975).ForEach(print);//过滤打印</code></li><li><code>films.Sort((f1, f2) =&gt; f1.Name.CompareTo(f2.Name));//排序打印</code></li><li><code>films.ForEach(print);</code></li><li><code>#endregion</code></li></ol><div><b>在事件处理程序中进行记录</b></div><ol><li><code>public partial class Form1 : Form</code></li><li><code>{</code></li><li><code>public Form1()</code></li><li><code>{</code></li><li><code>InitializeComponent();</code></li><li><code>Button button = new Button { Text = &quot;Click me&quot; };</code></li><li><code>button.Click += (src, e) =&gt; Log(&quot;Click&quot;, src, e);</code></li><li><code>button.KeyPress += (src, e) =&gt; Log(&quot;KeyPress&quot;, src, e);</code></li><li><code>button.MouseClick+=(src,e)=&gt;Log(&quot;MouseClick&quot;,src,e);</code></li><li><code>Form form = new Form { AutoSize = true, Controls = { button } };</code></li><li><code>Application.Run(form);</code></li><li><code>}</code></li><li><code>static void Log(string title, object sender, EventArgs e)</code></li><li><code>{</code></li><li><code>Console.WriteLine(&quot;Event:{0}&quot;, title);</code></li><li><code>Console.WriteLine(&quot;Sender:{0}&quot;, sender);</code></li><li><code>Console.WriteLine(&quot;Argument:{0}&quot;, e);</code></li><li><code>foreach (PropertyDescriptor prop in TypeDescriptor.GetProperties(e))</code></li><li><code>{</code></li><li><code>string name = prop.DisplayName;</code></li><li><code>object value = prop.GetValue(e);</code></li><li><code>Console.WriteLine(&quot; {0}={1}&quot;, name, value);</code></li><li><code>}</code></li><li><code>}</code></li><li><code>static void Log(string title, object sender)</code></li><li><code>{</code></li><li><code>Console.WriteLine(&quot;Event:{0}&quot;, title);</code></li><li><code>Console.WriteLine(&quot;Sender:{0}&quot;, sender);</code></li><li><code>}</code></li><li><code>}</code></li></ol><div><span style="font-size: 1.067rem;"><b>表达式树</b></span></div><div><span style="font-size: 1.067rem;">表达式树是对象构成的树，树中每个节点本身都是一个表达式。不同的表达式类型代表能在代码中执行的不通操作：二元操作（加法）一元操作（获取一个数字长度），方法调用，构造函数等。</span></div><div><span style="font-size: 1.067rem;">Expressions命名空间代表表达式各个类，它们都继承至</span><span style="font-size: 16px;">Expressions</span></div><div><span style="font-size: 1.067rem;">Expressions类两个属性：</span></div><ul><li><font size="3">Type属性代表表达式求值后的.NET类型</font></li><li><font size="3">NodeType属性返回所代表的表达式种类</font></li></ul><ol><li><code>#region 9-6一个非常简单的表达式树</code></li><li><code>//System.Linq.Expressions命名空间包含了代表表达式的各个类，他们都继承至Expression</code></li><li><code>Expression firstArg = Expression.Constant(2);</code></li><li><code>Expression secondArg = Expression.Constant(3);</code></li><li><code>Expression add = Expression.Add(firstArg, secondArg);</code></li><li><code>Console.WriteLine(add);</code></li><li><code>#endregion</code></li></ol><div>“叶”表达式在代码中最先创建：你自下而上构建了这些表达式。这是由于“表达式不易变”这一事实决定的——创建好表达式后，它就永远不会改变。</div><div><img border="0"></img></div><div>                                                                                       表达式图形化表示</div><div><b>将表达式树编译成委托</b></div><div>LambdaExpression是从Expression派生的类型之一。泛型类Expression&lt;TDelegate&gt;又是从LambdaExpression派生的。</div><div><img border="0"></img></div><div>                  从Expression&lt;TDelegate&gt;上溯至Expression的层次结构</div><div>Expression和Expression&lt;TDelegate&gt;类区别在于，泛型类以静态类型的方法标识了它是什么种类的表达式，也就是说，它确定了返回类型和参数。</div><ol><li><code>#region 9-7编译并执行一个表达式</code></li><li><code>Expression firstArg = Expression.Constant(2);</code></li><li><code>Expression secondArg = Expression.Constant(3);</code></li><li><code>Expression add = Expression.Add(firstArg, secondArg);</code></li><li><code>Func&lt;int&gt; compiled = Expression.Lambda&lt;Func&lt;int&gt;&gt;(add).Compile();</code></li><li><code>Console.WriteLine(compiled());</code></li><li><code>#endregion</code></li></ol><div><b>将C#Lambda表达式转换成表达式树</b></div><div>Lambda表达式能隐式或显示的转换成恰当的委托实例。还可以要求编译器通过你的Lambda表达式构建一个表达式树，在执行时创建Expression&lt;TDelegate&gt;的一个实例。</div><ol><li><code>#region 9-8用Lambda表达式转换成表达式树</code></li><li><code>Expression&lt;Func&lt;int&gt;&gt; return5 = () =&gt; 5;//Lambda表达式</code></li><li><code>Func&lt;int&gt; compiled1 = return5.Compile();</code></li><li><code>Console.WriteLine(compiled1());</code></li><li><code>#endregion</code></li></ol><div>并非所有得Lambda表达式都能转换成表达式树。不能将带有一个语句块的Lambda转换成表达式树——只有对单个表达式进行求值的Lambda才可以。表达式中海不能包含赋值操作，在表达式树中表达不了这种操作。</div><ol><li><code>#region 9-9演示一个更复杂的表达式树</code></li><li><code>Expression&lt;Func&lt;string, string, bool&gt;&gt; expression = (x, y) =&gt; x.StartsWith(y);</code></li><li><code>var compiled = expression.Compile();</code></li><li><code>Console.WriteLine(compiled(&quot;First&quot;, &quot;Second&quot;));</code></li><li><code>Console.WriteLine(compiled(&quot;First&quot;, &quot;Fir&quot;));</code></li><li><code>#endregion</code></li></ol><div><img border="0"></img></div><ol><li><code>#region 9-10用代码来构造一个方法调用表达式树</code></li><li><code>MethodInfo method = typeof(string).GetMethod(&quot;StartsWith&quot;, new[] { typeof(string) });//获取方法名为StartsWith，参数为string的公共方法</code></li><li><code>var target = Expression.Parameter(typeof(string), &quot;x&quot;);</code></li><li><code>var methodArg = Expression.Parameter(typeof(string), &quot;y&quot;);</code></li><li><code>Expression[] methodArgs = new[] { methodArg };</code></li><li><code>//Call(Expression instance, MethodInfo method, params Expression[] arguments)</code></li><li><code>Expression call = Expression.Call(target, method, methodArgs);//x.StartsWith(y),以上部件创建CallExpression</code></li><li><code>var lambdaParameters = new[] { target, methodArg };//这里使用的参数顺序就是调用委托所使用的参数顺序</code></li><li><code>var lambda = Expression.Lambda&lt;Func&lt;string, string, bool&gt;&gt;(call, lambdaParameters);//(x,y)=&gt;x.StartsWith(y),lambdaParameters填充call集合</code></li><li><code>var compiled = lambda.Compile();//生成lambda表达式的委托</code></li><li><code>Console.WriteLine(compiled(&quot;First&quot;, &quot;csend&quot;));</code></li><li><code>Console.WriteLine(compiled(&quot;First&quot;, &quot;Fir&quot;));</code></li><li><code>#endregion</code></li></ol><div><br /></div><div><b>位于LINQ核心的表达式树</b></div><div>Lambda表达式提供了编译时检查的能力，而表达式可以将执行模型从你所需要的逻辑中提取出来。进程外的LINQ提供器的中心思想在于，我们可以从一个熟悉的源语言（C#）生成一个表达式树，将结果作为一个中间格式，在将其转换成目标平台的本地语言（SQL）</div><div><span style="font-size: 1.067rem;"><b>类型推断和重载决策的改变</b></span></div><div><span style="font-size: 1.067rem;"><span style="font-size: 1rem;"><b>精简泛型方法调用</b></span></span></div><div><span style="font-size:1rem">用一个Lambda表达式调用一个泛型方法，同时传递一个隐式类型的参数列表，编译器就必须推断出你想要的是什么类型，然后才能检查出Lambda表达式主体</span></div><ol><li><span style="font-size:1rem"><code>#region 9-11 需要新的类型推断规则例子（用Lambda表达式调用一个泛型方法）</code></span></li><li><code>static void PrintConvertedValue&lt;TInput, TOutput&gt;(TInput input, Converter&lt;TInput, TOutput&gt; converter)</code></li><li><code>{</code></li><li><code>Console.WriteLine(converter(input));</code></li><li><code>}</code></li><li><code>#endregion</code></li></ol><ol><li><code>#region 9-11</code></li><li><code>PrintConvertedValue(&quot;I'm a string&quot;, x =&gt; x.Length);//C#2中，编译将失败，C#2类型推断单独针对每一个实参来进行的，从一个实参无法推断出另一个实参</code></li><li><code>#endregion</code></li></ol><div><b>推断匿名函数的返回类型</b></div><ol><li><code>#region 9-13根据一天当中的时间来选择返回int或object</code></li><li><code>delegate T MyFunc&lt;T&gt;();</code></li><li><code>static void WriteResult&lt;T&gt;(MyFunc&lt;T&gt; function)</code></li><li><code>{</code></li><li><code>Console.WriteLine(function());</code></li><li><code>}</code></li><li><code>#endregion</code></li></ol><ol><li><code>#region 9-13</code></li><li><code>WriteResult(delegate</code></li><li><code>{</code></li><li><code>if (DateTime.Now.Hour &lt; 22)//int</code></li><li><code>{</code></li><li><code>return 10;</code></li><li><code>}</code></li><li><code>else//object</code></li><li><code>{</code></li><li><code>return new object();</code></li><li><code>}</code></li><li><code>});//编译器采用处理隐式数组的逻辑处理返回类型，对int进行了装箱，返回类型为object</code></li><li><code>#endregion</code></li></ol><div><b>分两阶段进行类型推断</b></div><ol><li><code>#region 9-14综合来自多个实参的信息，灵活地进行类型推断</code></li><li><code>static void PrintType&lt;T&gt;(T first, T second)//被强制转换为具体类型参数的最终固定变量类型</code></li><li><code>{</code></li><li><code>Console.WriteLine(typeof(T));</code></li><li><code>}</code></li><li><code>#endregion</code></li></ol><ol><li><code>#region 9-14</code></li><li><code>PrintType(1,new object());//返回类型推断为object类型</code></li><li><code>#endregion</code></li></ol><div>类型推断分两阶段进行：第一阶段处理的是普通的实参，其类型是一开始便知道的，这包括那些参数列表是显示类型的匿名函数</div><div>第二阶段是推断隐式类型的Lambda表达式和方法组的类型，其思想是，根据以拼凑的信息，判断是否足够推断出Lambda表达式的参数类型。</div><div><img border="0"></img></div><ol><li><code>#region 9-15多级类型推断</code></li><li><code>static void ConvertTwice&lt;TInput, TMiddle, TOutput&gt;(TInput input, Converter&lt;TInput, TMiddle&gt; firstConversion, Converter&lt;TMiddle, TOutput&gt; secondConversion)</code></li><li><code>{</code></li><li><code>TMiddle middle = firstConversion(input);</code></li><li><code>TOutput output = secondConversion(middle);</code></li><li><code>Console.WriteLine(output);</code></li><li><code>}</code></li><li><code>#endregion</code></li></ol><ol><li><code>#region 9-15</code></li><li><code>//第一阶段，编译器处理普通实参，得到TInput类型string，第一次执行阶段二，TInput固定为string类型，推断TMiddle为int，再次执行第二阶段，TMiddle固定为int，TOutput为double，推断结束</code></li><li><code>//lambda表达式主体只有在输入参数的类型已知后才能进行检查</code></li><li><code>ConvertTwice(&quot;Another string&quot;, text =&gt; text.Length, length =&gt; Math.Sqrt(length));</code></li><li><code>#endregion</code></li></ol><div><b>选择正确的被重载方法</b></div><ol><li><code>#region 9-16委托返回类型影响了重载选择</code></li><li><code>//如果一个匿名函数能转换成参数列表相同，但返回类型不同的两个委托类型，就根据从“推断的返回类型”到“委托的返回类型”的转换来判断哪个委托转换好</code></li><li><code>static void Execute(Func&lt;int&gt; action)</code></li><li><code>{</code></li><li><code>Console.WriteLine(&quot;action return an int:&quot; + action());</code></li><li><code>}</code></li><li><code>static void Execute(Func&lt;double&gt; action)</code></li><li><code>{</code></li><li><code>Console.WriteLine(&quot;action return a douban:&quot; + action());</code></li><li><code>}</code></li><li><code>#endregion</code></li></ol><ol><li><code>#region 9-16</code></li><li><code>Execute(() =&gt; 1);</code></li><li><code>#endregion</code></li></ol><div><br /></div></span>
+                        </div>
+                    </p>
+            </div>
+        </div>
+       
+    </section>
+    <!-- 多说公共JS代码 end -->
+    <div class="IndexLinkListWrap">
+        <div class="moketitle" style="font-size: 15px;">友情链接</div>
+        <ul class="friendlyLink">
+
+            <a href='http://www.zbboke.com/' target='_blank'>Tan-sir个人博客</a>
+
+
+
+        </ul>
+    </div>
+    <footer class="footer">
+        <div class="footer-inner">
+            <div style="padding:0 20px;overflow:hidden;">
+                <div class="copyright pull-left">
+
+                    <a href="/about/">关于</a> |
+
+                    <a href="/xx/">学习</a> |
+
+                    <a href="/tp/">娱乐</a> |
+
+                    <a href="/cz/">成长</a> |
+
+                    <a>Copyright © 2016, zhangbing All Rights Reserved. </a>| <a href="http://www.miitbeian.gov.cn/" target="_blank" rel="nofollow">苏ICP备16050559号</a> <a target="_blank" href="sitemap.htm">网站地图</a>
+                </div>
+                <div class="trackcode pull-right">
+                </div>
+            </div>
+
+        </div>
+    </footer>
+</body>
+</html>
