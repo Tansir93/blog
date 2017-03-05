@@ -74,7 +74,7 @@ $(function () {
 
 
                 <li class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-home">@Html.ActionLink("学习", "List", new { ID = 4 })</li>
-                }</li>
+                </li>
                 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">
                     <a>笔记</a>
                     <ul class="sub-menu">
@@ -154,7 +154,7 @@ $(function () {
                 loop: true
             });
         </script>
-        <div class="content-wrap">
+        @*<div class="content-wrap">
             <div class="content">
                 <div class="sticky">
                     <h2 class="title">@Html.ActionLink("特别推荐","List",new {ID=1})</h2>
@@ -208,7 +208,7 @@ $(function () {
 
 
                     </ul>
-                </div>
+                </div>*@
                 <h2 class="title">最新发布</h2>
             @{
                 List<objMsg> listMsg = (List<objMsg>)ViewData["NewMsg"];
@@ -222,20 +222,10 @@ $(function () {
                     </div>
                     <header>
                         <h2>
-                            <a href="/tp/707.html" title=@Item.Title target="_blank">@Item.Title</a>
-                        </h2>
+                            <a href="/Home/Content/@Item.ID" class="thumbnail" target="_blank">@Html.Raw(HttpUtility.HtmlDecode(@Item.Title))</a>   @*@Html.ActionLink(@Html.Raw(HttpUtility.HtmlDecode(@Item.Title)).ToString(), "Content", new { ID = @Item.ID })*@
+</h2>
                     </header>
-                    <p class="note">@{
-                        if (Item.Msg.Length <= 100)
-                        {
-                         @Html.Raw(HttpUtility.HtmlDecode(@Item.Msg));
-                        }
-                        else
-                        {
-                            @Html.Raw(HttpUtility.HtmlDecode(Item.Msg.Remove(100, Item.Msg.Length - 100)))
-                         @*@Html.Raw(Item.Msg.Remove(100, Item.Msg.Length - 100));*@
-                        }
-                                    }...</p>
+                 
                     <p>
                         <span class="muted">
                             <i class="icon-user icon12"></i> Tan-sir
@@ -255,7 +245,7 @@ $(function () {
         </div>
         </div>
 
-        <aside class="sidebar">
+        @*<aside class="sidebar">
             <div class="widget">
                 <h3 class="widget_tit">热门标签</h3>
                 <div class="tag_list">
@@ -371,7 +361,7 @@ $(function () {
                 #ds-recent-comments li.ds-comment {
                     border: none;
                 }
-            </style>
+            </style>*@
             @*<div class="pinglun"  style="border-radius:5px;      box-shadow: 0 1px 3px rgba(0, 0, 0, .1);">
                 <h3 class="rmpl">热门评论</h3>*@
             <!-- 多说最新评论 start -->
@@ -409,7 +399,7 @@ $(function () {
 
                         </div>*@
 
-            <script>
+            @*<script>
                 var birthDay = new Date("09/17/2016");  // 这里填写网站第一次运行日期
                 var now = new Date();
                 var duration = now.getTime() - birthDay.getTime();
@@ -417,7 +407,7 @@ $(function () {
                 total = "<strong style='color:red;'>" + total + "</strong >";
                 document.getElementById("showDays").innerHTML = "本站运行：" + total + "天"; //这里就是总运行天数
 
-            </script>
+            </script>*@
 
 
 
@@ -448,13 +438,13 @@ $(function () {
 
 
 
-        </aside>
+        @*</aside>*@
     </section>
     <div class="IndexLinkListWrap">
         <div class="moketitle" style="font-size: 15px;">友情链接</div>
         <ul class="friendlyLink">
 
-            <a href='http://www.zbboke.com/' target='_blank'>Tan-sir个人博客</a>
+            <a href='http://www.cnblogs.com/Tan-sir/' target='_blank'>Tan-sir个人博客</a>
 
 
 
@@ -465,7 +455,7 @@ $(function () {
             <div style="padding:0 20px;overflow:hidden;">
                 <div class="copyright pull-left">
 
-                    <a href="/about/">关于</a> |
+                    @*<a href="/about/">关于</a> |
 
                     <a href="/xx/">学习</a> |
 
@@ -473,10 +463,10 @@ $(function () {
 
                     <a href="/cz/">成长</a> |
 
-                    <a>Copyright © 2016, zhangbing All Rights Reserved. </a>| <a href="http://www.miitbeian.gov.cn/" target="_blank" rel="nofollow">苏ICP备16050559号</a> <a target="_blank" href="sitemap.htm">网站地图</a>
+                    <a>Copyright © 2017, Tanzhengyu All Rights Reserved. </a>| <a href="http://www.miitbeian.gov.cn/" target="_blank" rel="nofollow">苏ICP备16050559号</a> <a target="_blank" href="sitemap.htm">网站地图</a>*@
                 </div>
                 <div class="trackcode pull-right">
-                <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://"); document.write(unescape("%3Cspan id='cnzz_stat_icon_1260588650'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1260588650%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script></div>
+                @*<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://"); document.write(unescape("%3Cspan id='cnzz_stat_icon_1260588650'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1260588650%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script></div>*@
             </div>
 
         </div>
@@ -514,7 +504,7 @@ $(function () {
 
 
 
-    <script>
+    @*<script>
         (function () {
             var bp = document.createElement('script');
             var curProtocol = window.location.protocol.split(':')[0];
@@ -527,7 +517,7 @@ $(function () {
             var s = document.getElementsByTagName("script")[0];
             s.parentNode.insertBefore(bp, s);
         })();
-    </script>
+    </script>*@
 
 
 

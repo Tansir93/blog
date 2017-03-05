@@ -1,4 +1,5 @@
-﻿@using ModelMyBlog
+﻿@using System.Web.UI.WebControls
+@using ModelMyBlog
 <!DOCTYPE HTML>
 <html>
 
@@ -37,7 +38,7 @@
                     <a>笔记</a>
                     <ul class="sub-menu">
                         @{
-                            List<objSpecificType> list = (List<objSpecificType>)ViewData["book"];
+                            List<objSpecificType> list = (List<objSpecificType>) ViewData["book"];
                             foreach (objSpecificType Item in list)
                             {
                                 <li class="menu-item menu-item-type-taxonomy menu-item-object-category">@Html.ActionLink(@Item.Name, "List", new { ID = @Item.ID })</li>
@@ -78,14 +79,12 @@
 
 
 
-    @{
-        objMsg msg = (objMsg)ViewData["msg"];
-    }
+
     <section class="container">
         <div class="content-wrap">
             <div class="content">
                 <header class="article-header">
-                    <h1 class="article-title"><h1>@Html.Raw(HttpUtility.HtmlDecode(@msg.Title))</h1></h1>
+                    <h1 class="article-title"><h1>新增</h1></h1>
                     <div class="meta">
                         <p style="float:right; display:none; margin:0px; "></p>
                         <span class="muted">
@@ -105,6 +104,9 @@
                             .bdsharebuttonbox {
                                 margin-left: 10px;
                             }
+                            .whbt {
+                                width: 100px;
+                            }
                         </style>
 
                     </div>
@@ -112,9 +114,19 @@
 
                 <article class="article-content">
 
-                    <p>
-                        @Html.Raw(HttpUtility.HtmlDecode(@msg.Msg))
-                    </p>
+               
+                    @using (@Html.BeginForm("SaveContent", "Home",FormMethod.Post))
+                    {
+                        <p>
+                            标题：@Html.TextBox("tbTilie", null, new {@style = "width:800px;"})<br/>
+                            内容：@Html.TextArea("tbMsg", null, new { @style = "width:800px;height: 500px;" })<br />
+                            类别：@Html.TextBox("tbType")
+                            <br/><br/>
+                            @Html.TextBox("username", null, new { @style = "width:100px;" })
+                            @Html.TextBox("password", null, new { @style = "width:100px;" })<br/>
+                            <input type="submit"/>
+                        </p>
+                    }
             </div>
         </div>
 

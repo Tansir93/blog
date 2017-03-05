@@ -13,7 +13,7 @@
     <title>Tan-sir个人博客 - 給自己一个机会我要让世界认识自己✿</title>
 
     <meta name="keywords" content="Tan-sir,博客,Tan-sir博客,Tan-sir个人博客,个人博客,好看的博客" />
-    <meta name="description" content="✿Tan-sir个人博客✿是一个分享前端学习资料的博客型网站,与广大前端爱好者一起分享最新技术,一起解决所遇到的问题.还会分享很多有趣的段子,快点老司机要开车拉！" />
+    <meta name="description" content="✿Tan-sir个人博客✿是一个分享学习资料的博客型网站,与广大爱好者一起分享最新技术,一起解决所遇到的问题.还会分享很多有趣的段子,快点老司机要开车拉！" />
 
     <link rel='stylesheet' id='open_social_css-css' href='~/Content/css/os.css' type='text/css' media='all' />
     <link rel="stylesheet" href="~/Content/css/style.css" media="all">
@@ -74,7 +74,7 @@ $(function () {
 
 
                 <li class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-home">@Html.ActionLink("学习", "List", new { ID =4 })</li>
-                }</li>
+                </li>
                 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">
                     <a>笔记</a>
                     <ul class="sub-menu">
@@ -174,27 +174,30 @@ $(function () {
                     {
                         <article class="excerpt">
                             <div class="focus">
-                                <a href="/tp/707.html" class="thumbnail" target="_blank">
+                                
                                     <img src="~/Img/picture/1-161111162413138.jpg" alt=@Item.Title title=@Item.Title />
-                                </a>
+                          
                             </div>
                             <header>
                                 <h2>
-                                    <a href="/tp/707.html" title=@Item.Title target="_blank">@Item.Title</a>
+                                    @*<a href="/tp/707.html" title=@Item.Title target="_blank">*@
+                                    <a href="/Home/Content/@Item.ID" class="thumbnail" target="_blank">@Html.Raw(HttpUtility.HtmlDecode(@Item.Title))</a>
+@*</a>*@
                                 </h2>
                             </header>
-                            <p class="note">
+                            @*<p class="note">
                                 @{
-                              //  if (Item.Msg.Length <= 100)
-                              //  {
-                                    @Item.Msg;
-                              //  }
-                              //  else
-                              //  {
-                              //      @Item.Msg.Remove(100, Item.Msg.Length - 10);
-                              //  }
+                                if (Item.Msg.Length <= 100)
+                                {
+                                    @Html.Raw(HttpUtility.HtmlDecode(@Item.Msg));
+                                }
+                                else
+                                {
+                                    @Html.Raw(HttpUtility.HtmlDecode(Item.Msg.Remove(100, Item.Msg.Length - 100)))
+                                    
+                                }
                             }...
-                        </p>
+                        </p>*@
                         <p>
                             <span class="muted">
                                 <i class="icon-user icon12"></i> Tan-sir
@@ -333,7 +336,7 @@ $(function () {
     <footer class="footer">
         <div class="footer-inner">
             <div style="padding:0 20px;overflow:hidden;">
-                <div class="copyright pull-left">
+                @*<div class="copyright pull-left">
 
                     <a href="/about/">关于</a> |
 
@@ -344,10 +347,10 @@ $(function () {
                     <a href="/cz/">成长</a> |
 
                     <a>Copyright © 2016, zhangbing All Rights Reserved. </a>| <a href="http://www.miitbeian.gov.cn/" target="_blank" rel="nofollow">苏ICP备16050559号</a> <a target="_blank" href="sitemap.htm">网站地图</a>
-                </div>
-                <div class="trackcode pull-right">
+                </div>*@
+                @*<div class="trackcode pull-right">
                     <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://"); document.write(unescape("%3Cspan id='cnzz_stat_icon_1260588650'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1260588650%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
-                </div>
+                </div>*@
             </div>
 
         </div>
